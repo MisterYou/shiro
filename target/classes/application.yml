@@ -1,0 +1,58 @@
+server:
+  error:
+    whitelabel:
+      enabled: true
+security:
+  basic:
+    enabled: false
+spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  datasource:
+    name: njair
+#    url: jdbc:mysql://127.0.0.1:3306/shiro?useUnicode=true&characterEncoding=UTF-8
+#    username: root
+#    password: 123456
+    #url: jdbc:mysql://192.168.199.180:3306/dev_njair?useUnicode=true&characterEncoding=UTF-8
+    #username: root
+    #password: xsscd
+    url: jdbc:mysql://127.0.0.1:3306/njair1?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+  freemarker:
+    suffix: .ftl
+    template-loader-path: classpath:/templates/
+#LOG
+#logging:
+  #config: classpath:log4j2.xml
+mybatis:
+  type-aliases-package: com.train.domain
+  mapperLocations: classpath:mapper/*.xml
+  configuration:
+    #下划线转驼峰
+    mapUnderscoreToCamelCase: true
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    pageSizeZero: true
+    params: count=countSql
+appProps:
+    apiCityDataUri: http://www.scnewair.cn:3390/smartadmin/statAnalyse/getCityData
+
